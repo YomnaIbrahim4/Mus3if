@@ -1,0 +1,33 @@
+{
+  "title": "CPR Guide",
+  "steps": [
+    {
+      "title": "Assess the Situation",
+      "description": "Make sure the area is safe, then check the person’s responsiveness by gently shaking their shoulder and asking loudly, 'Are you okay?'"
+    },
+    {
+      "title": "Call for Help",
+      "description": "Ask someone nearby to call emergency services, or call yourself immediately."
+    },
+    {
+      "title": "Open Airway",
+      "description": "Place the person on their back, tilt the head back and lift the chin to open the airway."
+    },
+    {
+      "title": "Check Breathing",
+      "description": "Look, listen, and feel for normal breathing for no more than 10 seconds."
+    },
+    {
+      "title": "Start Chest Compressions",
+      "description": "Place your hands in the center of the chest and push hard and fast (100–120 compressions per minute)."
+    },
+    {
+      "title": "Rescue Breaths (if trained)",
+      "description": "Give 2 rescue breaths after every 30 compressions if you are trained and feel safe."
+    },
+    {
+      "title": "Continue CPR",
+      "description": "Keep going until medical help arrives or the person shows signs of recovery."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Bleeding Guide",
+  "steps": [
+    {
+      "title": "Ensure Safety",
+      "description": "Make sure the scene is safe before approaching the injured person."
+    },
+    {
+      "title": "Apply Pressure",
+      "description": "Use a clean cloth, sterile bandage, or even your hand to apply firm, direct pressure to the wound."
+    },
+    {
+      "title": "Maintain Pressure",
+      "description": "Do not remove the cloth if it becomes soaked. Place another cloth on top and keep pressing."
+    },
+    {
+      "title": "Elevate if Possible",
+      "description": "If the wound is on an arm or leg, raise it above heart level if it doesn’t cause more pain."
+    },
+    {
+      "title": "Use a Tourniquet (last resort)",
+      "description": "If bleeding is life-threatening and cannot be controlled, apply a tourniquet above the wound if trained."
+    },
+    {
+      "title": "Seek Medical Help",
+      "description": "Call emergency services immediately for severe or uncontrolled bleeding."
+    }
+  ]
+}

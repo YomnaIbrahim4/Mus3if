@@ -1,0 +1,29 @@
+{
+  "title": "Fractures Guide",
+  "steps": [
+    {
+      "title": "Ensure Safety",
+      "description": "Check the scene is safe before approaching the injured person."
+    },
+    {
+      "title": "Control Bleeding",
+      "description": "If there is bleeding, apply gentle pressure with a clean cloth or bandage."
+    },
+    {
+      "title": "Immobilize the Limb",
+      "description": "Keep the injured part in the same position. Do not try to straighten or move the bone."
+    },
+    {
+      "title": "Support with Splint",
+      "description": "If available, place a splint or firm object next to the injured limb to keep it stable."
+    },
+    {
+      "title": "Apply Cold Pack",
+      "description": "Apply a cold pack or wrapped ice to reduce swelling (never place ice directly on skin)."
+    },
+    {
+      "title": "Seek Medical Help",
+      "description": "Call emergency services immediately and keep the person still until help arrives."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Choking Guide",
+  "steps": [
+    {
+      "title": "Ask if They Can Cough",
+      "description": "Encourage the person to keep coughing if they can breathe or speak."
+    },
+    {
+      "title": "Call for Help",
+      "description": "If the airway is fully blocked, call emergency services immediately."
+    },
+    {
+      "title": "Give Back Blows",
+      "description": "Stand behind the person and give up to 5 firm blows between their shoulder blades with the heel of your hand."
+    },
+    {
+      "title": "Perform Abdominal Thrusts (Heimlich)",
+      "description": "If the object is still stuck, stand behind them, wrap your arms around their waist, and give quick upward abdominal thrusts."
+    },
+    {
+      "title": "Alternate if Needed",
+      "description": "Alternate 5 back blows and 5 abdominal thrusts until the object is expelled or help arrives."
+    },
+    {
+      "title": "If Person Becomes Unresponsive",
+      "description": "Start CPR immediately and check the mouth for the object each time before giving rescue breaths."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Burns Guide",
+  "steps": [
+    {
+      "title": "Ensure Safety",
+      "description": "Remove the person from the source of heat and make sure the area is safe."
+    },
+    {
+      "title": "Cool the Burn",
+      "description": "Run cool (not cold) water over the burn for 10–20 minutes."
+    },
+    {
+      "title": "Remove Tight Items",
+      "description": "Take off rings, watches, or tight clothing near the burned area before swelling starts."
+    },
+    {
+      "title": "Protect the Burn",
+      "description": "Cover the burn with a sterile, non-stick bandage or clean cloth."
+    },
+    {
+      "title": "Avoid Ointments",
+      "description": "Do not apply butter, oils, toothpaste, or ice directly to the burn."
+    },
+    {
+      "title": "Seek Medical Help",
+      "description": "Call emergency services if the burn is severe, large, or on the face, joints, or sensitive areas."
+    }
+  ]
+}

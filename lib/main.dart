@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mus3if/screens/home_screen.dart';
+// import 'package:mus3if/screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mus3if/screens/login_screen.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +37,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }

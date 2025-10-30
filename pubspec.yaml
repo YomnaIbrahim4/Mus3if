@@ -37,12 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   url_launcher: ^6.3.2
   font_awesome_flutter: ^10.9.1
+
   firebase_core: ^4.2.0
   firebase_auth: ^6.1.1  # Use the latest version
   google_sign_in: ^6.2.1 # Should be fine, but check for updates
   firebase_messaging: ^16.0.0
   # flutter_local_notifications: ^19.4.2
  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

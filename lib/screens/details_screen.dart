@@ -59,7 +59,7 @@ class _GuideDetailsScreenState extends State<GuideDetailsScreen> {
       ),
       body: Column(
         children: [
-          // 🔴 Step progress bar
+          //  Step progress bar
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
@@ -135,7 +135,7 @@ class _GuideDetailsScreenState extends State<GuideDetailsScreen> {
                         Text(
                           step["title"],
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: isActive ? Colors.red.shade800 : Colors.black,
                           ),
@@ -144,7 +144,7 @@ class _GuideDetailsScreenState extends State<GuideDetailsScreen> {
                         Text(
                           step["description"],
                           style: TextStyle(
-                              fontSize: 16, color: Colors.grey.shade800),
+                              fontSize: 20, color: Colors.grey.shade800),
                         ),
                       ],
                     ),

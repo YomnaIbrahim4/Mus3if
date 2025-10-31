@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
@@ -6,7 +5,6 @@ import 'package:mus3if/data/validation/form_validation.dart';
 import 'package:mus3if/screens/forget_password_screen.dart';
 import 'package:mus3if/screens/sign_up_screen.dart';
 import 'package:mus3if/widgets/coustom_text_field_widget.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

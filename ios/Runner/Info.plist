@@ -41,6 +41,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+<<<<<<< HEAD
+=======
+	<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>tel</string>
+  <string>https</string>
+  <string>http</string>
+>>>>>>> 4f4eee8 (guide and profile tabs)
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

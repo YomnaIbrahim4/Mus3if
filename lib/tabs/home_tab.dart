@@ -6,13 +6,10 @@ import 'package:mus3if/widgets/help_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+  HomeTab({super.key});
 
   Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
+    final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
     if (!await launchUrl(launchUri)) {
       throw Exception("Could not launch $phoneNumber");
     }
@@ -35,7 +32,7 @@ class HomeTab extends StatelessWidget {
                 },
               ),
             ),
-            HelpButton(makePhoneCall: _makePhoneCall), // ✅ زر منفصل في widgets/custom
+            HelpButton(makePhoneCall: _makePhoneCall),
           ],
         ),
       ),

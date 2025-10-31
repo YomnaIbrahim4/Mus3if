@@ -30,7 +30,7 @@ class CustomDropdown extends StatelessWidget {
         SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xFFE2E8F0)),
+            border: Border.all(color: Color(0xFFE2E8F0)),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
@@ -38,7 +38,7 @@ class CustomDropdown extends StatelessWidget {
             child: DropdownButton<String>(
               value: value,
               isExpanded: true,
-              underline: const SizedBox(),
+              underline: SizedBox(),
               onChanged: onChanged,
               items: items.map<DropdownMenuItem<String>>((
                 Map<String, dynamic> item,

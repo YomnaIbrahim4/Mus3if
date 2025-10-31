@@ -19,9 +19,7 @@ class ContactDetailScreen extends StatelessWidget {
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
       }
-    } catch (e) {
-      // Handle error silently
-    }
+    } catch (e) {}
   }
 
   Future<void> _openUrl(String urlString) async {
@@ -30,9 +28,7 @@ class ContactDetailScreen extends StatelessWidget {
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       }
-    } catch (e) {
-      // Handle error silently
-    }
+    } catch (e) {}
   }
 
   Future<void> _deleteContact(BuildContext context) async {
@@ -40,20 +36,20 @@ class ContactDetailScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Delete Contact"),
+          title: Text("Delete Contact"),
           content: Text("Are you sure you want to delete ${contact.name}?"),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: const Text("Cancel"),
+              child: Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(true),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFDC2626),
+                backgroundColor: Color(0xFFDC2626),
                 foregroundColor: Colors.white,
               ),
-              child: const Text("Delete"),
+              child: Text("Delete"),
             ),
           ],
         );
@@ -73,7 +69,7 @@ class ContactDetailScreen extends StatelessWidget {
             SnackBar(
               content: Text("${contact.name} deleted successfully!"),
               backgroundColor: const Color(0xFF16A34A),
-              duration: const Duration(seconds: 2),
+              duration: Duration(seconds: 2),
             ),
           );
 
@@ -84,8 +80,8 @@ class ContactDetailScreen extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Error deleting contact: $e"),
-              backgroundColor: const Color(0xFFDC2626),
-              duration: const Duration(seconds: 3),
+              backgroundColor: Color(0xFFDC2626),
+              duration: Duration(seconds: 3),
             ),
           );
         }
@@ -97,19 +93,19 @@ class ContactDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contact Details"),
-        backgroundColor: const Color(0xFFDC2626),
+        title: Text("Contact Details"),
+        backgroundColor: Color(0xFFDC2626),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.delete),
+            icon: Icon(Icons.delete),
             onPressed: () => _deleteContact(context),
             tooltip: "Delete Contact",
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -119,7 +115,7 @@ class ContactDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Row(
                   children: [
                     Container(
@@ -135,14 +131,14 @@ class ContactDetailScreen extends StatelessWidget {
                         size: 30,
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    SizedBox(width: 16),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             contact.name,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -159,7 +155,7 @@ class ContactDetailScreen extends StatelessWidget {
                           if (contact.relationship != null)
                             Text(
                               contact.relationship!,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 14,
                                 color: Color(0xFF64748B),
                               ),
@@ -171,16 +167,16 @@ class ContactDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
 
             if (contact.phoneNumber != "N/A") ...[
               _buildPhoneSection("Primary Phone", contact.phoneNumber),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
 
             if (contact.alternatePhone != null) ...[
               _buildPhoneSection("Alternate Phone", contact.alternatePhone!),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
 
             if (contact.location != null) ...[
@@ -189,40 +185,23 @@ class ContactDetailScreen extends StatelessWidget {
                 "Location",
                 contact.location!,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
 
             if (contact.schedule != null) ...[
               _buildInfoSection(Icons.schedule, "Schedule", contact.schedule!),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
 
             if (contact.scheduleUrl != null) ...[
               _buildUrlSection("General Schedule", contact.scheduleUrl!),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
 
             if (contact.studentScheduleUrl != null) ...[
               _buildUrlSection("Student Schedule", contact.studentScheduleUrl!),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ],
-
-            // SizedBox(
-            //   width: double.infinity,
-            //   child: OutlinedButton.icon(
-            //     onPressed: () => _deleteContact(context),
-            //     icon: const Icon(Icons.delete),
-            //     label: const Text("Delete Contact"),
-            //     style: OutlinedButton.styleFrom(
-            //       foregroundColor: const Color(0xFFDC2626),
-            //       side: const BorderSide(color: Color(0xFFDC2626)),
-            //       padding: const EdgeInsets.symmetric(vertical: 16),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(12.0),
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -234,32 +213,32 @@ class ContactDetailScreen extends StatelessWidget {
       elevation: 2.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF1E293B),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Text(
               phoneNumber,
-              style: const TextStyle(fontSize: 16, color: Color(0xFF64748B)),
+              style: TextStyle(fontSize: 16, color: Color(0xFF64748B)),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () => _callNumber(phoneNumber),
-                icon: const Icon(Icons.call, size: 20),
-                label: const Text("Call"),
+                icon: Icon(Icons.call, size: 20),
+                label: Text("Call"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF16A34A),
+                  backgroundColor: Color(0xFF16A34A),
                   foregroundColor: Colors.white,
                 ),
               ),
@@ -275,30 +254,24 @@ class ContactDetailScreen extends StatelessWidget {
       elevation: 2.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, size: 24, color: const Color(0xFFDC2626)),
-            const SizedBox(width: 16),
+            Icon(icon, size: 24, color: Color(0xFFDC2626)),
+            SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Text(
                     content,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFF64748B),
-                    ),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF64748B)),
                   ),
                 ],
               ),
@@ -314,24 +287,24 @@ class ContactDetailScreen extends StatelessWidget {
       elevation: 2.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
                 onPressed: () => _openUrl(url),
-                icon: const Icon(Icons.open_in_new),
-                label: const Text("View Schedule"),
+                icon: Icon(Icons.open_in_new),
+                label: Text("View Schedule"),
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: const Color(0xFFDC2626),
-                  side: const BorderSide(color: Color(0xFFDC2626)),
+                  foregroundColor: Color(0xFFDC2626),
+                  side: BorderSide(color: Color(0xFFDC2626)),
                 ),
               ),
             ),
@@ -345,11 +318,11 @@ class ContactDetailScreen extends StatelessWidget {
 Color _getColorForType(String type) {
   switch (type) {
     case 'doctor':
-      return const Color(0xFF2563EB);
+      return Color(0xFF2563EB);
     case 'hospital':
-      return const Color(0xFFDC2626);
+      return Color(0xFFDC2626);
     default:
-      return const Color(0xFF16A34A);
+      return Color(0xFF16A34A);
   }
 }
 

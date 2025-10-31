@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:mus3if/data/categories_list.dart';
 import 'package:mus3if/widgets/appbar_widget.dart';
 import 'package:mus3if/widgets/category_widget.dart';
 import 'package:mus3if/widgets/help_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-=======
->>>>>>> 4f4eee8 (guide and profile tabs)
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+  HomeTab({super.key});
 
-<<<<<<< HEAD
   Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
+    final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
     if (!await launchUrl(launchUri)) {
       throw Exception("Could not launch $phoneNumber");
     }
@@ -39,15 +32,10 @@ class HomeTab extends StatelessWidget {
                 },
               ),
             ),
-            HelpButton(makePhoneCall: _makePhoneCall), // ✅ زر منفصل في widgets/custom
+            HelpButton(makePhoneCall: _makePhoneCall),
           ],
         ),
       ),
     );
-=======
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
->>>>>>> 4f4eee8 (guide and profile tabs)
   }
 }

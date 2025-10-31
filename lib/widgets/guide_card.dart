@@ -85,7 +85,7 @@ class GuideCard extends StatelessWidget {
   Color _getCategoryColor(String category) {
     switch (category) {
       case "Cardiac Emergency":
-        return const Color(0xFFDC2626);
+        return Color(0xFFDC2626);
       case "Bleeding Emergency":
         return Colors.deepOrange;
       case "Burn Injury":
@@ -93,11 +93,11 @@ class GuideCard extends StatelessWidget {
       case "Bone Injury":
         return Colors.brown;
       case "Life Saving":
-        return const Color(0xFF16A34A);
+        return Color(0xFF16A34A);
       case "Airway Emergency":
-        return const Color(0xFF2563EB);
+        return Color(0xFF2563EB);
       default:
-        return const Color(0xFFDC2626);
+        return Color(0xFFDC2626);
     }
   }
 

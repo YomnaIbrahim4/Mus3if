@@ -34,7 +34,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   void _saveProfile() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Profile updated successfully!'),
           backgroundColor: Color(0xFF16A34A),
         ),
@@ -47,12 +47,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit Profile"),
+        title: Text("Edit Profile"),
         backgroundColor: const Color(0xFFDC2626),
         foregroundColor: Colors.white,
-        actions: [
-          IconButton(icon: const Icon(Icons.save), onPressed: _saveProfile),
-        ],
+        actions: [IconButton(icon: Icon(Icons.save), onPressed: _saveProfile)],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -71,7 +69,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _bloodTypeController,
                 label: "Blood Type",
@@ -83,27 +81,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _allergiesController,
                 label: "Allergies",
                 icon: Icons.warning,
                 maxLines: 3,
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _saveProfile,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFDC2626),
+                    backgroundColor: Color(0xFFDC2626),
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Save Changes",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),

@@ -52,8 +52,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: const Color(0xFFDC2626),
-        duration: const Duration(seconds: 3),
+        backgroundColor: Color(0xFFDC2626),
+        duration: Duration(seconds: 3),
       ),
     );
   }
@@ -65,34 +65,13 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
       );
 
       await ContactStorage.saveContacts(contacts);
-
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("${contact.name} deleted successfully!"),
-            backgroundColor: const Color(0xFF16A34A),
-            duration: const Duration(seconds: 3),
-            action: SnackBarAction(
-              label: 'UNDO',
-              textColor: Colors.white,
-              onPressed: () async {
-                contacts.add(contact);
-                await ContactStorage.saveContacts(contacts);
-                setState(() {});
-              },
-            ),
-          ),
-        );
-
-        setState(() {});
-      }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Error deleting contact: $e"),
-            backgroundColor: const Color(0xFFDC2626),
-            duration: const Duration(seconds: 3),
+            backgroundColor: Color(0xFFDC2626),
+            duration: Duration(seconds: 3),
           ),
         );
       }
@@ -111,8 +90,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Emergency Contacts"),
-        backgroundColor: const Color(0xFFDC2626),
+        title: Text("Emergency Contacts"),
+        backgroundColor: Color(0xFFDC2626),
         foregroundColor: Colors.white,
         bottom: TabBar(
           controller: _tabController,
@@ -142,7 +121,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddContactDialog(context),
         backgroundColor: const Color(0xFFDC2626),
-        child: const Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: Colors.white),
       ),
     );
   }
@@ -158,19 +137,19 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
             Icon(
               _getIconForType(type),
               size: 64,
-              color: const Color(0xFF64748B).withOpacity(0.3),
+              color: Color(0xFF64748B).withOpacity(0.3),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               "No ${type == 'personal' ? 'contacts' : '${type}s'} added yet",
-              style: const TextStyle(fontSize: 16, color: Color(0xFF64748B)),
+              style: TextStyle(fontSize: 16, color: Color(0xFF64748B)),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Text(
               "Tap the + button to add a contact",
               style: TextStyle(
                 fontSize: 14,
-                color: const Color(0xFF64748B).withOpacity(0.6),
+                color: Color(0xFF64748B).withOpacity(0.6),
               ),
             ),
           ],
@@ -179,7 +158,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.0),
       itemCount: contactsList.length,
       itemBuilder: (context, index) {
         final contact = contactsList[index];
@@ -209,12 +188,12 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Add Contact"),
-          content: const Text("Choose how you want to add a contact:"),
+          title: Text("Add Contact"),
+          content: Text("Choose how you want to add a contact:"),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text("Cancel"),
+              child: Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () {
@@ -228,10 +207,10 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFDC2626),
+                backgroundColor: Color(0xFFDC2626),
                 foregroundColor: Colors.white,
               ),
-              child: const Text("Add New Contact"),
+              child: Text("Add New Contact"),
             ),
           ],
         );

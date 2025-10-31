@@ -84,7 +84,6 @@ class GuideDetailScreen extends StatelessWidget {
               return _buildStepItem(index + 1, step);
             }).toList(),
             SizedBox(height: 24),
-            //_buildEmergencyNote(),
           ],
         ),
       ),
@@ -115,7 +114,7 @@ class GuideDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Expanded(
             child: Text(step, style: TextStyle(fontSize: 14, height: 1.4)),
           ),
@@ -123,42 +122,6 @@ class GuideDetailScreen extends StatelessWidget {
       ),
     );
   }
-
-  // Widget _buildEmergencyNote() {
-  //   return Container(
-  //     padding: EdgeInsets.all(16),
-  //     decoration: BoxDecoration(
-  //       color: Color(0xFFFEE2E2),
-  //       borderRadius: BorderRadius.circular(12.0),
-  //       border: Border.all(color: Color(0xFFDC2626).withOpacity(0.3)),
-  //     ),
-  //     // child:  Row(
-  //     //   children: [
-  //     //     Icon(Icons.warning_amber, color: Color(0xFFDC2626), size: 24),
-  //     //     SizedBox(width: 12),
-  //     //     // Expanded(
-  //     //     //   // child: Column(
-  //     //     //   //   crossAxisAlignment: CrossAxisAlignment.start,
-  //     //     //   //   children: [
-  //     //     //   //     // Text(
-  //     //     //   //     //   "Emergency Note",
-  //     //     //   //     //   style: TextStyle(
-  //     //     //   //     //     fontWeight: FontWeight.bold,
-  //     //     //   //     //     color: Color(0xFFDC2626),
-  //     //     //   //     //   ),
-  //     //     //   //     // ),
-  //     //     //   //     SizedBox(height: 4),
-  //     //     //   //     Text(
-  //     //     //   //       "Always call emergency services (911) first in serious situations",
-  //     //     //   //       style: TextStyle(fontSize: 14, color: Color(0xFFB91C1C)),
-  //     //     //   //     ),
-  //     //     //   //   ],
-  //     //     //   // ),
-  //     //     // ),
-  //     //   ],
-  //     // ),
-  //   );
-  // }
 
   IconData _getCategoryIcon(String category) {
     switch (category) {

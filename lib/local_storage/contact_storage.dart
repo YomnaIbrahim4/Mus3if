@@ -8,8 +8,6 @@ class ContactStorage {
 
   static Future<void> saveContacts(List<EmergencyContact> contacts) async {
     final prefs = await SharedPreferences.getInstance();
-
-    // Convert contacts to JSON
     final List<Map<String, dynamic>> contactsJson = contacts.map((contact) {
       return {
         'name': contact.name,
@@ -25,11 +23,9 @@ class ContactStorage {
       };
     }).toList();
 
-    // Save as string
     await prefs.setString(_contactsKey, jsonEncode(contactsJson));
   }
 
-  // Load contacts from local storage
   static Future<List<EmergencyContact>> loadContacts() async {
     final prefs = await SharedPreferences.getInstance();
     final String? contactsString = prefs.getString(_contactsKey);
@@ -61,7 +57,6 @@ class ContactStorage {
     }
   }
 
-  // Delete a specific contact
   static Future<void> deleteContact(
     List<EmergencyContact> contacts,
     EmergencyContact contactToDelete,
@@ -74,7 +69,6 @@ class ContactStorage {
     await saveContacts(contacts);
   }
 
-  // Clear all contacts
   static Future<void> clearAllContacts() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_contactsKey);

@@ -1,13 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: Colors.yellow,);
-=======
 import 'package:mus3if/data/dummy_data.dart';
 import 'package:mus3if/screens/emergency_contacts_screen.dart';
 import 'package:mus3if/widgets/medical_info_card.dart';
@@ -21,11 +12,11 @@ class ProfileTab extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -35,7 +26,7 @@ class ProfileTab extends StatelessWidget {
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),
                     blurRadius: 10,
-                    offset: const Offset(0, 4),
+                    offset: Offset(0, 4),
                   ),
                 ],
               ),
@@ -98,7 +89,7 @@ class ProfileTab extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.contacts, color: Color(0xFFDC2626), size: 24),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +139,7 @@ class ProfileTab extends StatelessWidget {
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),
-                    side: const BorderSide(color: Color(0xFFE2E8F0)),
+                    side: BorderSide(color: Color(0xFFE2E8F0)),
                   ),
                 ),
                 child: Text("Edit Profile"),
@@ -158,6 +149,5 @@ class ProfileTab extends StatelessWidget {
         ),
       ),
     );
->>>>>>> 4f4eee8 (guide and profile tabs)
   }
 }

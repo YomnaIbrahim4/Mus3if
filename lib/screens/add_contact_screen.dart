@@ -68,8 +68,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("${newContact.name} added successfully!"),
-              backgroundColor: const Color(0xFF16A34A),
-              duration: const Duration(seconds: 2),
+              backgroundColor: Color(0xFF16A34A),
+              duration: Duration(seconds: 2),
             ),
           );
 
@@ -81,8 +81,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Error saving contact: $e"),
-              backgroundColor: const Color(0xFFDC2626),
-              duration: const Duration(seconds: 3),
+              backgroundColor: Color(0xFFDC2626),
+              duration: Duration(seconds: 3),
             ),
           );
         }
@@ -112,13 +112,13 @@ class _AddContactScreenState extends State<AddContactScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Emergency Contact"),
-        backgroundColor: const Color(0xFFDC2626),
+        title: Text("Add Emergency Contact"),
+        backgroundColor: Color(0xFFDC2626),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
             icon: _isSaving
-                ? const SizedBox(
+                ? SizedBox(
                     width: 20,
                     height: 20,
                     child: CircularProgressIndicator(
@@ -126,13 +126,13 @@ class _AddContactScreenState extends State<AddContactScreen> {
                       strokeWidth: 2,
                     ),
                   )
-                : const Icon(Icons.save),
+                : Icon(Icons.save),
             onPressed: _isSaving ? null : _addContact,
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -147,7 +147,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   });
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _nameController,
                 label: "Full Name *",
@@ -159,7 +159,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _phoneController,
                 label: "Phone Number *",
@@ -172,7 +172,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _alternatePhoneController,
                 label: "Alternate Phone",
@@ -180,7 +180,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 keyboardType: TextInputType.phone,
               ),
               if (_selectedType == 'personal') ...[
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 CustomTextField(
                   controller: _relationshipController,
                   label: "Relationship",
@@ -188,7 +188,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 ),
               ],
               if (_selectedType == 'doctor' || _selectedType == 'hospital') ...[
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 CustomTextField(
                   controller: _specialtyController,
                   label: _selectedType == 'doctor'
@@ -197,7 +197,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   icon: Icons.medical_services,
                 ),
               ],
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               CustomTextField(
                 controller: _locationController,
                 label: "Location/Address",
@@ -205,28 +205,28 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 maxLines: 2,
               ),
               if (_selectedType == 'doctor') ...[
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 CustomTextField(
                   controller: _scheduleController,
                   label: "Schedule",
                   icon: Icons.schedule,
                 ),
               ],
-              const SizedBox(height: 32),
+              SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _isSaving ? null : _addContact,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFDC2626),
+                    backgroundColor: Color(0xFFDC2626),
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
                   child: _isSaving
-                      ? const SizedBox(
+                      ? SizedBox(
                           height: 20,
                           width: 20,
                           child: CircularProgressIndicator(
@@ -234,7 +234,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                             strokeWidth: 2,
                           ),
                         )
-                      : const Text(
+                      : Text(
                           "Add Contact",
                           style: TextStyle(
                             fontSize: 16,

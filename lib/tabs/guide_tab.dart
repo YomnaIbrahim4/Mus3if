@@ -1,13 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-class GuideTab extends StatelessWidget {
-  const GuideTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: Colors.black,);
-=======
 import 'package:mus3if/data/dummy_data.dart';
 import 'package:mus3if/widgets/guide_card.dart';
 import '../screens/guide_detail_screen.dart';
@@ -20,7 +11,7 @@ class GuideTab extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,6 +53,5 @@ class GuideTab extends StatelessWidget {
         ),
       ),
     );
->>>>>>> 4f4eee8 (guide and profile tabs)
   }
 }

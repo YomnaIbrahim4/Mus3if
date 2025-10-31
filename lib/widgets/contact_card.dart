@@ -130,7 +130,7 @@ class ContactCard extends StatelessWidget {
               ),
               if (contact.phoneNumber != "N/A")
                 IconButton(
-                  icon: const Icon(Icons.call, color: Color(0xFF16A34A)),
+                  icon: Icon(Icons.call, color: Color(0xFF16A34A)),
                   onPressed: onCall,
                 ),
             ],
@@ -143,11 +143,11 @@ class ContactCard extends StatelessWidget {
   Color _getColorForType(String type) {
     switch (type) {
       case 'doctor':
-        return const Color(0xFF2563EB);
+        return Color(0xFF2563EB);
       case 'hospital':
-        return const Color(0xFFDC2626);
+        return Color(0xFFDC2626);
       default:
-        return const Color(0xFF16A34A);
+        return Color(0xFF16A34A);
     }
   }
 

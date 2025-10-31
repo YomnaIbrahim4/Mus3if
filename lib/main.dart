@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 // import 'package:mus3if/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,18 +9,47 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
+=======
+import 'package:flutter/material.dart' hide HomeScreen;
+import 'package:mus3if/screens/home_screen.dart';
+import 'package:mus3if/data/dummy_data.dart';
+import 'package:mus3if/local_storage/contact_storage.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    final loadedContacts = await ContactStorage.loadContacts();
+
+    if (loadedContacts.isEmpty) {
+      contacts = List.from(defaultContacts);
+      await ContactStorage.saveContacts(contacts);
+    } else {
+      contacts = loadedContacts;
+    }
+  } catch (e) {
+    print('Error loading contacts: $e');
+    contacts = List.from(defaultContacts);
+  }
+
+  runApp(const MyApp());
+>>>>>>> 4f4eee8 (guide and profile tabs)
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+<<<<<<< HEAD
   // This widget is the root of your application.
+=======
+>>>>>>> 4f4eee8 (guide and profile tabs)
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mus3if',
       theme: ThemeData(
+<<<<<<< HEAD
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -39,6 +69,12 @@ class MyApp extends StatelessWidget {
       ),
       home: LoginScreen(),
 
+=======
+        primaryColor: Color(0xFFDC2626),
+        scaffoldBackgroundColor: Color(0xFFF8FAFC),
+      ),
+      home: HomeScreen(),
+>>>>>>> 4f4eee8 (guide and profile tabs)
     );
   }
 }

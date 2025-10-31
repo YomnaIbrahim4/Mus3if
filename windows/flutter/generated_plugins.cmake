@@ -3,8 +3,11 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
   firebase_auth
   firebase_core
+=======
+>>>>>>> 4f4eee8 (guide and profile tabs)
   url_launcher_windows
 )
 

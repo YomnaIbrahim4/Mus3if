@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.example.mus3if">
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Add CALL_PHONE permission if you want direct calling -->
+>>>>>>> 4f4eee8 (guide and profile tabs)
     <application
         android:label="mus3if"
         android:name="${applicationName}"
@@ -37,9 +45,21 @@
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
+<<<<<<< HEAD
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
+=======
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="tel" />
+  </intent>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" />
+  </intent>
+</queries>
+>>>>>>> 4f4eee8 (guide and profile tabs)
 </manifest>

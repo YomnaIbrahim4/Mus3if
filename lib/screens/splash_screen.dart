@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
           Lottie.asset(
-          'assets/animation/heartbeat _line.json',
+          'assets/animation/heartbeat_line.json',
           width: 400,
           height: 400,
           repeat: true,

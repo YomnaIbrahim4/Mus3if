@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mus3if/data/dummy_data.dart';
 import 'package:mus3if/widgets/guide_card.dart';
 import '../screens/guide_detail_screen.dart';
+import '../widgets/appbar_widget.dart';
 
 class GuideTab extends StatelessWidget {
   const GuideTab({super.key});
@@ -10,6 +11,7 @@ class GuideTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
+      appBar: AppBarWidget(),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

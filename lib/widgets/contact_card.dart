@@ -7,7 +7,7 @@ class ContactCard extends StatelessWidget {
   final VoidCallback onCall;
   final VoidCallback? onDelete;
 
-  ContactCard({
+  const ContactCard({
     super.key,
     required this.contact,
     required this.onTap,

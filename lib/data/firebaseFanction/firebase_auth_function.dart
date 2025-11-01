@@ -107,7 +107,7 @@ class FirebaseAuthFunction {
         return null;
       }
       final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+          await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
@@ -125,7 +125,7 @@ class FirebaseAuthFunction {
       );
       return UserCredential;
     } catch (e) {
-      showSnackBar(context, 'SignIn failed : ${e}');
+      showSnackBar(context, 'SignIn failed : $e');
       return null;
     }
   }

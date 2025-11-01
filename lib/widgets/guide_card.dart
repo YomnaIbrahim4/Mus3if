@@ -5,7 +5,7 @@ class GuideCard extends StatelessWidget {
   final Guide guide;
   final VoidCallback onTap;
 
-  GuideCard({super.key, required this.guide, required this.onTap});
+  const GuideCard({super.key, required this.guide, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

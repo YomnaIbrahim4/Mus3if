@@ -4,7 +4,7 @@ import 'package:mus3if/model/user_profile.dart';
 class MedicalInfoCard extends StatelessWidget {
   final UserProfile user;
 
-  MedicalInfoCard({super.key, required this.user});
+  const MedicalInfoCard({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {

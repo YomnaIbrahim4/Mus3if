@@ -4,7 +4,7 @@ import 'package:mus3if/model/guides.dart';
 class GuideDetailScreen extends StatelessWidget {
   final Guide guide;
 
-  GuideDetailScreen({super.key, required this.guide});
+  const GuideDetailScreen({super.key, required this.guide});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class GuideDetailScreen extends StatelessWidget {
               final index = entry.key;
               final step = entry.value;
               return _buildStepItem(index + 1, step);
-            }).toList(),
+            }),
             SizedBox(height: 24),
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:mus3if/widgets/help_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);

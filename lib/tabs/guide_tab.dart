@@ -4,7 +4,7 @@ import 'package:mus3if/widgets/guide_card.dart';
 import '../screens/guide_detail_screen.dart';
 
 class GuideTab extends StatelessWidget {
-  GuideTab({super.key});
+  const GuideTab({super.key});
 
   @override
   Widget build(BuildContext context) {

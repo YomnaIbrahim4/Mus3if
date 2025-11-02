@@ -12,7 +12,7 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Profile',),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(

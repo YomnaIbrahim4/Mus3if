@@ -9,7 +9,7 @@ class GuideTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Guides',),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(

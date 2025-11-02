@@ -19,7 +19,7 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Your Safety, Our Priority'),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

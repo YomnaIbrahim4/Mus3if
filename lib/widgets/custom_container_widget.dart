@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../data/tools_data.dart';
 import '../screens/tools_screen.dart';
 
 class CustomContainerWidget extends StatefulWidget {
@@ -21,7 +21,7 @@ class _CustomContainerWidgetState extends State<CustomContainerWidget> {
     Future.delayed(const Duration(milliseconds: 400), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ToolsScreen()),
+        MaterialPageRoute(builder: (context) => ToolsScreen(tools: firstAidItems)),
       ).then((_) {
         setState(() {
           _currentHeight = 275;

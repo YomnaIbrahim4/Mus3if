@@ -81,7 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   dotWidth: 8,
                   dotHeight: 8,
                   dotColor: Colors.grey.shade500,
-                  activeDotColor: Color(0xffB72323),
+                  activeDotColor: Colors.red,
                 ),
               ),
               
@@ -100,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     }
                   }, 
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffB72323),
+                    backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
                     padding:  EdgeInsets.all(15),
                     shape: RoundedRectangleBorder(

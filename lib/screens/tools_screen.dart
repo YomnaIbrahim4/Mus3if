@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mus3if/screens/tools_details_screen.dart';
 
 import '../models/tools_model.dart';
 import '../widgets/appbar_widget.dart';
@@ -24,7 +25,10 @@ class ToolsScreen extends StatelessWidget {
           itemBuilder: (context,index){
             final tool = tools[index];
             return GestureDetector(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context)=> ToolsDetailsScreen(tool: tool,)));
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,

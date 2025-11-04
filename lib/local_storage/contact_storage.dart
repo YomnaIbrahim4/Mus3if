@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mus3if/model/emergancy_contact.dart';
+import 'package:mus3if/models/emergancy_contact.dart';
 
 class ContactStorage {
   static const String _contactsKey = 'emergency_contacts';

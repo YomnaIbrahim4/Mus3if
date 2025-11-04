@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mus3if/data/dummy_data.dart';
-import 'package:mus3if/model/emergancy_contact.dart';
+import 'package:mus3if/models/emergancy_contact.dart';
 import 'package:mus3if/local_storage/contact_storage.dart';
 import 'package:mus3if/widgets/custom_text_field.dart';
 import 'package:mus3if/widgets/custom_dropdown.dart';

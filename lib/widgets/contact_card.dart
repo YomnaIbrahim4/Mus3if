@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mus3if/model/emergancy_contact.dart';
+import 'package:mus3if/models/emergancy_contact.dart';
 
 class ContactCard extends StatelessWidget {
   final EmergencyContact contact;

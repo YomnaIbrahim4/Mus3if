@@ -1,6 +1,6 @@
-import 'package:mus3if/model/emergancy_contact.dart';
-import 'package:mus3if/model/guides.dart';
-import 'package:mus3if/model/user_profile.dart';
+import 'package:mus3if/models/emergancy_contact.dart';
+import 'package:mus3if/models/guides.dart';
+import 'package:mus3if/models/user_profile.dart';
 
 final List<Guide> guides = [
   Guide(

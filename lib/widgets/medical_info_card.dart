@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mus3if/model/user_profile.dart';
+import 'package:mus3if/models/user_profile.dart';
 
 class MedicalInfoCard extends StatelessWidget {
   final UserProfile user;

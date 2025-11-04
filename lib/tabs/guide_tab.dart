@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/appbar_widget.dart';
 import '../widgets/custom_container_widget.dart';
+import '../widgets/video_list_widget.dart';
 
 class GuideTab extends StatelessWidget {
   const GuideTab({super.key});
@@ -17,6 +18,28 @@ class GuideTab extends StatelessWidget {
           children: [
             SizedBox(height: 16,),
             CustomContainerWidget(),
+            SizedBox(height: 50),
+            Row(
+              children: [
+                Text(
+                  'Try to Watch ',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: Divider(
+                    thickness: 1,
+                    color: Colors.grey.withOpacity(0.4),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            VideoListWidget(),
+
           ],
         ),
       ),

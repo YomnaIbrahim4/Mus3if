@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({super.key});
-
+  final String title;
+const AppBarWidget({
+    super.key,
+    required this.title, 
+  });
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
@@ -17,10 +20,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         alignment: Alignment.center,
         child: SafeArea(
           child: Text(
-            'Your Safety, Our Priority',
+            title,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,

@@ -3,14 +3,16 @@ import 'package:mus3if/data/dummy_data.dart';
 import 'package:mus3if/screens/emergency_contacts_screen.dart';
 import 'package:mus3if/widgets/medical_info_card.dart';
 import '../screens/edit_profile_screen.dart';
+import '../widgets/appbar_widget.dart';
 
 class ProfileTab extends StatelessWidget {
-  ProfileTab({super.key});
+  const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
+      appBar: AppBarWidget(title: 'Profile',),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(

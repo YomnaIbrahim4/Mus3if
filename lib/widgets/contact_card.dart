@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mus3if/model/emergancy_contact.dart';
+import 'package:mus3if/models/emergancy_contact.dart';
 
 class ContactCard extends StatelessWidget {
   final EmergencyContact contact;
@@ -7,7 +7,7 @@ class ContactCard extends StatelessWidget {
   final VoidCallback onCall;
   final VoidCallback? onDelete;
 
-  ContactCard({
+  const ContactCard({
     super.key,
     required this.contact,
     required this.onTap,

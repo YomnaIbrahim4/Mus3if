@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mus3if/screens/splash_screen.dart';
 import 'firebase_options.dart';
-import 'package:mus3if/screens/login_screen.dart';
 import 'package:mus3if/data/dummy_data.dart';
 import 'package:mus3if/local_storage/contact_storage.dart';
 
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFFDC2626),
         scaffoldBackgroundColor: const Color(0xFFF8FAFC),
       ),
-      home: const LoginScreen(),
+      home:  SplashScreen(),
     );
   }
 }

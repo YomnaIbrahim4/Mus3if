@@ -6,7 +6,7 @@ import 'package:mus3if/widgets/help_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
@@ -19,7 +19,7 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Your Safety, Our Priority'),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

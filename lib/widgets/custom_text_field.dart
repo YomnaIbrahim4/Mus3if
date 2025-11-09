@@ -25,9 +25,12 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       maxLines: maxLines,
       keyboardType: keyboardType,
+
       decoration: InputDecoration(
+        filled: true,
+        fillColor: const Color.fromARGB(255, 254, 237, 237),
         labelText: label,
-        prefixIcon: Icon(icon, color: Color(0xFF64748B)),
+        prefixIcon: Icon(icon, color: Color(0xFFDC2626)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide(color: Color(0xFFE2E8F0)),

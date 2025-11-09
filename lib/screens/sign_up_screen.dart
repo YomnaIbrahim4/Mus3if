@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
 import 'package:mus3if/data/validation/form_validation.dart';
@@ -16,7 +15,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
+  final nameController = TextEditingController();
+  String? selectedBloodType;
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               children: [
                 CoustomTextFieldWidget(
+                  textController: nameController,
                   text: 'Full Name',
                   icon: Icon(Icons.person, color: Colors.red),
                   valuValidation: FormValidation.nameBloodValidation,
@@ -89,8 +90,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                       }).toList(),
                   onChanged: (value) {
-                   
-                    print("Selected: $value");
+                    setState(() {
+                      selectedBloodType = value;
+                    });
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -137,9 +139,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         FirebaseAuthFunction.SignUpWithPasswordAndEmail(
                           email: emailController.text,
                           password: passwordController.text,
+                          fullName: nameController.text,
+                          bloodType: selectedBloodType ?? "",
                           context: context,
                         );
-                       
                       }
                       if (!isChecked) {
                         ScaffoldMessenger.of(context).showSnackBar(

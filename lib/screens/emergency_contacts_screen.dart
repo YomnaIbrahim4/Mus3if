@@ -99,11 +99,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
           indicatorWeight: 3,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white70,
-          labelStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-          tabs: const [
+          labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          tabs: [
             Tab(text: "Personal"),
             Tab(text: "Doctors"),
             Tab(text: "Hospitals"),
@@ -120,7 +117,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddContactDialog(context),
-        backgroundColor: const Color(0xFFDC2626),
+        backgroundColor: Color(0xFFDC2626),
         child: Icon(Icons.add, color: Colors.white),
       ),
     );
@@ -137,7 +134,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen>
             Icon(
               _getIconForType(type),
               size: 64,
-              color: Color(0xFF64748B).withOpacity(0.3),
+              color: Color(0xFFDC2626).withOpacity(0.3),
             ),
             SizedBox(height: 16),
             Text(

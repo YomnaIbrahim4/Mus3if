@@ -1,6 +1,5 @@
 import 'package:mus3if/models/emergancy_contact.dart';
 import 'package:mus3if/models/guides.dart';
-import 'package:mus3if/models/user_profile.dart';
 
 final List<Guide> guides = [
   Guide(
@@ -150,13 +149,11 @@ final List<EmergencyContact> defaultContacts = [
   ),
 ];
 
-// This list will be populated from storage or default contacts
-// DO NOT modify this list directly - use ContactStorageService to save changes
 List<EmergencyContact> contacts = [];
 
-final UserProfile currentUser = UserProfile(
-  name: "Rawan Gamal",
-  bloodType: "O-",
-  allergies: "Peanuts, Shellfish, Penicillin",
-  contacts: contacts.where((contact) => contact.type == 'personal').toList(),
-);
+// final UserProfile currentUser = UserProfile(
+//   name: "Rawan Gamal",
+//   bloodType: "O-",
+//   allergies: "Peanuts, Shellfish, Penicillin",
+//   contacts: contacts.where((contact) => contact.type == 'personal').toList(),
+// );

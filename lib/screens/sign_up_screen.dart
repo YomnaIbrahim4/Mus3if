@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
 import 'package:mus3if/data/validation/form_validation.dart';
 import 'package:mus3if/widgets/coustom_text_field_widget.dart';
+import 'package:mus3if/widgets/image_picker_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -18,6 +20,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final nameController = TextEditingController();
   String? selectedBloodType;
   bool isChecked = false;
+  XFile? _imageFile;
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    emailController.dispose();
+    confirmPasswordController.dispose();
+    nameController.dispose();
+    super.dispose();
+  }
+
+  void _onImageSelected(XFile? image) {
+    setState(() {
+      _imageFile = image;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +52,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(25.0),
             child: Column(
               children: [
+                ImagePickerWidget(
+                  onImageSelected: _onImageSelected,
+                  radius: 80.0,
+                  cameraIconSize: 24.0,
+                  backgroundColor: Color(0xFFFEE2E2),
+                  iconColor: Color(0xFFDC2626),
+                  initialImagePath: _imageFile?.path,
+                ),
+                SizedBox(height: 20),
                 CoustomTextFieldWidget(
                   textController: nameController,
                   text: 'Full Name',
@@ -63,8 +91,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textController: confirmPasswordController,
                   text: 'Confirm Password',
                   icon: Icon(Icons.lock_outline, color: Colors.red),
-                  valuValidation:
-                      (value) => FormValidation.confirmPasswordValidation(
+                  valuValidation: (value) =>
+                      FormValidation.confirmPasswordValidation(
                         value,
                         passwordController.text,
                       ),
@@ -80,15 +108,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     filled: true,
                     fillColor: Color.fromARGB(255, 254, 237, 237),
                   ),
-                  items:
-                      ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((
-                        bloodType,
-                      ) {
-                        return DropdownMenuItem(
-                          value: bloodType,
-                          child: Text(bloodType),
-                        );
-                      }).toList(),
+                  items: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(
+                    (bloodType) {
+                      return DropdownMenuItem(
+                        value: bloodType,
+                        child: Text(bloodType),
+                      );
+                    },
+                  ).toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedBloodType = value;
@@ -101,7 +128,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: 20),
                 Row(
                   children: [
@@ -119,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     Text('I agree to the ', style: TextStyle(fontSize: 15)),
-                    Text(
+                    const Text(
                       'Terms and Conditions',
                       style: TextStyle(
                         color: Color(0xffF20D0D),
@@ -134,16 +160,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (_formKey.currentState!.validate() &&
-                          isChecked == true) {
-                        FirebaseAuthFunction.SignUpWithPasswordAndEmail(
-                          email: emailController.text,
-                          password: passwordController.text,
-                          fullName: nameController.text,
-                          bloodType: selectedBloodType ?? "",
-                          context: context,
-                        );
+                      if (!_formKey.currentState!.validate()) {
+                        return;
                       }
+
                       if (!isChecked) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -154,8 +174,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                         return;
                       }
-                    },
 
+                      await FirebaseAuthFunction.SignUpWithPasswordAndEmail(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                        fullName: nameController.text.trim(),
+                        bloodType: selectedBloodType ?? "",
+                        photoUrl: _imageFile?.path ?? "",
+                        context: context,
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffF20D0D),
                       shape: RoundedRectangleBorder(
@@ -172,7 +200,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-
                   children: [
                     Text(
                       "Already have an account? ",

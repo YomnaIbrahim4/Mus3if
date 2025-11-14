@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
 import 'package:mus3if/data/validation/form_validation.dart';
 import 'package:mus3if/screens/forget_password_screen.dart';
@@ -17,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-
                   children: [
                     Image(
                       image: AssetImage('assets/images/cpr.png'),
@@ -56,19 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: 'Enter your email',
                   icon: Icon(Icons.email, color: Colors.red),
                   valuValidation: FormValidation.emailValidation,
-                  // isfill: false,
                 ),
                 SizedBox(height: 20),
                 Text('Password', style: TextStyle(fontSize: 20)),
                 SizedBox(height: 10),
-
                 CoustomTextFieldWidget(
                   textController: passwordController,
                   text: 'Enter your password',
                   icon: Icon(Icons.lock, color: Colors.red),
                   isObs: true,
                   valuValidation: FormValidation.passwordValidation,
-                  // isfill: false,
                 ),
                 SizedBox(height: 30),
                 GestureDetector(
@@ -94,7 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        // _formKey.currentState!.reset();
                         FirebaseAuthFunction.LoginWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text,
@@ -114,18 +109,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-
                 SizedBox(height: 10),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () async {
-                      final GoogleSignIn googleSignIn = GoogleSignIn();
-                      await googleSignIn.signOut(); //  ده بيمسح الكاش
                       await FirebaseAuthFunction.signInWithGoogle(
                         context: context,
                       );
-                      FirebaseAuthFunction.signInWithGoogle(context: context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffF20D0D),
@@ -143,7 +134,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-
                   children: [
                     Text(
                       "Don't have an account? ",

@@ -24,19 +24,19 @@ class ContactCard extends StatelessWidget {
         background: Container(
           alignment: Alignment.centerRight,
           padding: EdgeInsets.only(right: 20),
-          margin: EdgeInsets.only(bottom: 12),
+          margin: EdgeInsets.only(bottom: 8),
           decoration: BoxDecoration(
             color: Color(0xFFDC2626),
             borderRadius: BorderRadius.circular(12.0),
           ),
-          child: const Icon(Icons.delete, color: Colors.white, size: 32),
+          child: Icon(Icons.delete, color: Colors.white, size: 32),
         ),
         confirmDismiss: (direction) async {
           return await showDialog<bool>(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: const Text("Delete Contact"),
+                title: Text("Delete Contact"),
                 content: Text(
                   "Are you sure you want to delete ${contact.name}?",
                 ),
@@ -48,7 +48,7 @@ class ContactCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () => Navigator.of(context).pop(true),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFDC2626),
+                      backgroundColor: Color(0xFFDC2626),
                       foregroundColor: Colors.white,
                     ),
                     child: Text("Delete"),
@@ -70,8 +70,8 @@ class ContactCard extends StatelessWidget {
 
   Widget _buildCard() {
     return Card(
-      margin: EdgeInsets.only(bottom: 12),
-      elevation: 2.0,
+      margin: EdgeInsets.only(bottom: 8),
+      elevation: 1.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: InkWell(
         onTap: onTap,
@@ -79,21 +79,22 @@ class ContactCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: _getColorForType(contact.type).withOpacity(0.1),
+                  color: Color(0xFFDC2626).withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   _getIconForType(contact.type),
-                  color: _getColorForType(contact.type),
+                  color: Color(0xFFDC2626),
+                  size: 24,
                 ),
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: 16),
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,6 +104,7 @@ class ContactCard extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
+                        color: Colors.black87,
                       ),
                     ),
                     SizedBox(height: 4),
@@ -111,44 +113,38 @@ class ContactCard extends StatelessWidget {
                         contact.specialty!,
                         style: TextStyle(
                           fontSize: 14,
-                          color: _getColorForType(contact.type),
+                          color: Color(0xFFDC2626),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                    if (contact.relationship != null)
-                      Text(
-                        contact.relationship!,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF64748B),
-                        ),
-                      ),
                     SizedBox(height: 4),
-                    Text(contact.phoneNumber, style: TextStyle(fontSize: 14)),
+                    Text(
+                      contact.phoneNumber,
+                      style: TextStyle(fontSize: 14, color: Colors.black),
+                    ),
                   ],
                 ),
               ),
+
               if (contact.phoneNumber != "N/A")
-                IconButton(
-                  icon: Icon(Icons.call, color: Color(0xFF16A34A)),
-                  onPressed: onCall,
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFDC2626),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: Icon(Icons.call, color: Colors.white, size: 20),
+                    onPressed: onCall,
+                    padding: EdgeInsets.zero,
+                  ),
                 ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Color _getColorForType(String type) {
-    switch (type) {
-      case 'doctor':
-        return Color(0xFF2563EB);
-      case 'hospital':
-        return Color(0xFFDC2626);
-      default:
-        return Color(0xFF16A34A);
-    }
   }
 
   IconData _getIconForType(String type) {

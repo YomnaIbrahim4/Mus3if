@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mus3if/tabs/home_tab.dart';
 import 'package:mus3if/tabs/guide_tab.dart';
 import 'package:mus3if/tabs/profile_tab.dart';
+import 'package:mus3if/screens/hospitals_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,13 +13,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-
-  final List<Widget> tabs = [
-    HomeTab(), 
-    GuideTab(), 
-    ProfileTab(),
-  ];
-
+  int _currentNavIndex = 0;
+  final List<Widget> tabs = [HomeTab(), GuideTab(), ProfileTab()];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -32,32 +28,53 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
+        currentIndex: _currentNavIndex,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.red.withOpacity(0.6),
         selectedFontSize: 15,
         unselectedFontSize: 0,
         showUnselectedLabels: false,
-        onTap: _onItemTapped,
+        onTap: (index) {
+          setState(() {
+            _currentNavIndex = index;
+          });
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HospitalsScreen()),
+            );
+          } else if (index == 3) {
+            _onItemTapped(2);
+          } else {
+            _onItemTapped(index);
+          }
+        },
         items: [
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.home_filled,0), 
-            label: "Home"),
+            icon: _buildIcon(Icons.home_filled, 0),
+            label: "Home",
+          ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.medical_services,1),
+            icon: _buildIcon(Icons.medical_services, 1),
             label: "Guides",
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.person,2), 
-            label: "Profile"),
+            icon: _buildIcon(Icons.location_on, 2),
+            label: "Locations",
+          ),
+          BottomNavigationBarItem(
+            icon: _buildIcon(Icons.person, 3),
+            label: "Profile",
+          ),
         ],
       ),
     );
   }
+
   Widget _buildIcon(IconData icon, int index) {
-    bool isSelected = _selectedIndex == index;
+    bool isSelected = _currentNavIndex == index;
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 300),
       padding: EdgeInsets.all(isSelected ? 6 : 0),
       decoration: isSelected
           ? BoxDecoration(

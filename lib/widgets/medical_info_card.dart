@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mus3if/models/user_profile.dart';
 
 class MedicalInfoCard extends StatelessWidget {
-  String fullName;
-  String bloodType;
-  String Email; 
+  final String fullName;
+  final String bloodType;
+  //final String Email;
 
-  MedicalInfoCard({super.key , required this.Email,required this.bloodType, required this.fullName});
+  const MedicalInfoCard({
+    super.key,
+    //required this.Email,
+    required this.bloodType,
+    required this.fullName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +35,8 @@ class MedicalInfoCard extends StatelessWidget {
             SizedBox(height: 16),
             _buildInfoRow(Icons.person, "User Name", fullName),
             SizedBox(height: 12),
-            _buildInfoRow(Icons.email, "Email", Email),
-            SizedBox(height: 12),
+            // _buildInfoRow(Icons.email, "Email", Email),
+            // SizedBox(height: 12),
             _buildInfoRow(Icons.bloodtype, "Blood Type", bloodType),
           ],
         ),

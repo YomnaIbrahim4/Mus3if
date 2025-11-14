@@ -91,117 +91,108 @@ class ContactDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Contact Details"),
-        backgroundColor: Color(0xFFDC2626),
-        foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () => _deleteContact(context),
-            tooltip: "Delete Contact",
-          ),
+    return Scaffold(appBar: _buildAppBar(context), body: _buildBody());
+  }
+
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Text("Contact Details"),
+      backgroundColor: Color(0xFFDC2626),
+      foregroundColor: Colors.white,
+      actions: [
+        IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () => _deleteContact(context),
+          tooltip: "Delete Contact",
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBody() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildHeaderCard(),
+          SizedBox(height: 24),
+          if (contact.phoneNumber != "N/A") ...[
+            _buildPhoneSection("Primary Phone", contact.phoneNumber),
+            SizedBox(height: 16),
+          ],
+          if (contact.alternatePhone != null) ...[
+            _buildPhoneSection("Alternate Phone", contact.alternatePhone!),
+            SizedBox(height: 16),
+          ],
+          if (contact.location != null) ...[
+            _buildInfoSection(Icons.location_on, "Location", contact.location!),
+            SizedBox(height: 16),
+          ],
+          if (contact.schedule != null) ...[
+            _buildInfoSection(Icons.schedule, "Schedule", contact.schedule!),
+            SizedBox(height: 16),
+          ],
+          if (contact.scheduleUrl != null) ...[
+            _buildUrlSection("General Schedule", contact.scheduleUrl!),
+            SizedBox(height: 16),
+          ],
+          if (contact.studentScheduleUrl != null) ...[
+            _buildUrlSection("Student Schedule", contact.studentScheduleUrl!),
+            SizedBox(height: 16),
+          ],
         ],
       ),
-      body: SingleChildScrollView(
+    );
+  }
+
+  Widget _buildHeaderCard() {
+    return Card(
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      child: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Card(
-              elevation: 2.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Color(0xFFDC2626).withOpacity(0.1),
+                shape: BoxShape.circle,
               ),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: _getColorForType(contact.type).withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        _getIconForType(contact.type),
-                        color: _getColorForType(contact.type),
-                        size: 30,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            contact.name,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          if (contact.specialty != null)
-                            Text(
-                              contact.specialty!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: _getColorForType(contact.type),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          if (contact.relationship != null)
-                            Text(
-                              contact.relationship!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF64748B),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              child: Icon(
+                _getIconForType(contact.type),
+                color: Color(0xFFDC2626),
+                size: 30,
               ),
             ),
-            SizedBox(height: 24),
-
-            if (contact.phoneNumber != "N/A") ...[
-              _buildPhoneSection("Primary Phone", contact.phoneNumber),
-              SizedBox(height: 16),
-            ],
-
-            if (contact.alternatePhone != null) ...[
-              _buildPhoneSection("Alternate Phone", contact.alternatePhone!),
-              SizedBox(height: 16),
-            ],
-
-            if (contact.location != null) ...[
-              _buildInfoSection(
-                Icons.location_on,
-                "Location",
-                contact.location!,
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    contact.name,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  if (contact.specialty != null)
+                    Text(
+                      contact.specialty!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color(0xFFDC2626),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  if (contact.relationship != null)
+                    Text(
+                      contact.relationship!,
+                      style: TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                    ),
+                ],
               ),
-              SizedBox(height: 16),
-            ],
-
-            if (contact.schedule != null) ...[
-              _buildInfoSection(Icons.schedule, "Schedule", contact.schedule!),
-              SizedBox(height: 16),
-            ],
-
-            if (contact.scheduleUrl != null) ...[
-              _buildUrlSection("General Schedule", contact.scheduleUrl!),
-              SizedBox(height: 16),
-            ],
-
-            if (contact.studentScheduleUrl != null) ...[
-              _buildUrlSection("Student Schedule", contact.studentScheduleUrl!),
-              SizedBox(height: 16),
-            ],
+            ),
           ],
         ),
       ),
@@ -238,7 +229,7 @@ class ContactDetailScreen extends StatelessWidget {
                 icon: Icon(Icons.call, size: 20),
                 label: Text("Call"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF16A34A),
+                  backgroundColor: Color(0xFFDC2626),
                   foregroundColor: Colors.white,
                 ),
               ),
@@ -313,26 +304,15 @@ class ContactDetailScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-Color _getColorForType(String type) {
-  switch (type) {
-    case 'doctor':
-      return Color(0xFF2563EB);
-    case 'hospital':
-      return Color(0xFFDC2626);
-    default:
-      return Color(0xFF16A34A);
-  }
-}
-
-IconData _getIconForType(String type) {
-  switch (type) {
-    case 'doctor':
-      return Icons.medical_services;
-    case 'hospital':
-      return Icons.local_hospital;
-    default:
-      return Icons.person;
+  IconData _getIconForType(String type) {
+    switch (type) {
+      case 'doctor':
+        return Icons.medical_services;
+      case 'hospital':
+        return Icons.local_hospital;
+      default:
+        return Icons.person;
+    }
   }
 }

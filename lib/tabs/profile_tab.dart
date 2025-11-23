@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,10 +47,12 @@ class _ProfileTabState extends State<ProfileTab> {
             'fullName': data['fullName'] ?? 'Unknown User',
             'bloodType': data['bloodType'] ?? 'Not set',
             'photoUrl': data['photoUrl'] ?? '',
+            'email': data['email'] ?? currentUser?.email ?? 'No Email',
           };
           _isLoading = false;
         });
       } else {
+        
         await FirebaseFirestore.instance
             .collection('users')
             .doc(currentUser!.uid)
@@ -58,6 +61,7 @@ class _ProfileTabState extends State<ProfileTab> {
               'fullName': currentUser?.displayName ?? 'Unknown User',
               'bloodType': '',
               'photoUrl': '',
+              'email': currentUser?.email ?? '',
               'createdAt': FieldValue.serverTimestamp(),
             });
 
@@ -67,6 +71,7 @@ class _ProfileTabState extends State<ProfileTab> {
             'fullName': currentUser?.displayName ?? 'Unknown User',
             'bloodType': '',
             'photoUrl': '',
+            'email': currentUser?.email ?? 'No Email',
           };
           _isLoading = false;
         });
@@ -75,7 +80,11 @@ class _ProfileTabState extends State<ProfileTab> {
       print('Error loading user data: $e');
       setState(() {
         _isLoading = false;
-        _userData = {'fullName': 'Error loading data', 'bloodType': 'Error'};
+        _userData = {
+          'fullName': 'Error loading data',
+          'bloodType': 'Error',
+          'email': 'Error',
+        };
       });
     }
   }
@@ -117,6 +126,7 @@ class _ProfileTabState extends State<ProfileTab> {
               MedicalInfoCard(
                 bloodType: _userData['bloodType'] ?? 'Not set',
                 fullName: _userData['fullName'] ?? 'Unknown User',
+                email: _userData['email'] ?? currentUser?.email ?? 'No Email',
               ),
               SizedBox(height: 24),
               EmergencyContactsCard(),

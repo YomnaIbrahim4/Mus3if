@@ -31,19 +31,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   Future<void> _loadUserData() async {
     if (currentUser != null) {
-      final doc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUser!.uid)
-          .get();
+      try {
+        final doc =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(currentUser!.uid)
+                .get();
 
-      if (doc.exists) {
-        setState(() {
-          _nameController.text = doc['fullName'] ?? '';
-          _bloodTypeController = doc['bloodType'] ?? '';
-          _currentPhotoUrl = doc['photoUrl'] ?? '';
-          _isLoading = false;
-        });
-      } else {
+        if (doc.exists) {
+          setState(() {
+            _nameController.text = doc['fullName'] ?? '';
+            _bloodTypeController = doc['bloodType'] ?? '';
+            _currentPhotoUrl = doc['photoUrl'] ?? '';
+            _isLoading = false;
+          });
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      } catch (e) {
+        print('Error loading user data: $e');
         setState(() {
           _isLoading = false;
         });
@@ -68,17 +76,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           'updatedAt': FieldValue.serverTimestamp(),
         };
 
-        String? photoUrlToSave;
-
+        
         if (_imageFile != null) {
-          photoUrlToSave = _imageFile!.path;
-        } else if (_currentPhotoUrl != null &&
-            _currentPhotoUrl!.startsWith('http')) {
-          photoUrlToSave = _currentPhotoUrl;
-        }
-
-        if (photoUrlToSave != null) {
-          updateData['photoUrl'] = photoUrlToSave;
+          updateData['photoUrl'] = _imageFile!.path;
+        } else if (_currentPhotoUrl != null && _currentPhotoUrl!.isNotEmpty) {
+          updateData['photoUrl'] = _currentPhotoUrl!;
         }
 
         await FirebaseFirestore.instance
@@ -105,9 +107,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           );
         }
       } finally {
-        if (mounted) {
-          setState(() => _isSaving = false);
-        }
+        if (mounted) setState(() => _isSaving = false);
       }
     }
   }
@@ -161,7 +161,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               SizedBox(height: 20),
               ImagePickerWidget(
                 onImageSelected: _onImageSelected,
-                initialImagePath: _currentPhotoUrl,
+                initialImagePath:
+                    _currentPhotoUrl != null && _currentPhotoUrl!.isNotEmpty
+                        ? _currentPhotoUrl
+                        : null,
                 radius: 60.0,
                 cameraIconSize: 15.0,
                 backgroundColor: Color(0xFFFEE2E2),
@@ -181,9 +184,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                initialValue: _bloodTypeController?.isNotEmpty == true
-                    ? _bloodTypeController
-                    : null,
+                value:
+                    _bloodTypeController?.isNotEmpty == true
+                        ? _bloodTypeController
+                        : null,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -193,14 +197,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   filled: true,
                   fillColor: Color.fromARGB(255, 254, 237, 237),
                 ),
-                items: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((
-                  bloodType,
-                ) {
-                  return DropdownMenuItem(
-                    value: bloodType,
-                    child: Text(bloodType),
-                  );
-                }).toList(),
+                items:
+                    ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((
+                      bloodType,
+                    ) {
+                      return DropdownMenuItem(
+                        value: bloodType,
+                        child: Text(bloodType),
+                      );
+                    }).toList(),
                 onChanged: (value) {
                   setState(() {
                     _bloodTypeController = value;
@@ -226,22 +231,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
-                  child: _isSaving
-                      ? SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                            strokeWidth: 2,
+                  child:
+                      _isSaving
+                          ? SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                          : Text(
+                            "Save Changes",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        )
-                      : Text(
-                          "Save Changes",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                 ),
               ),
             ],

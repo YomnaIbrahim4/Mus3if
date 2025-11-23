@@ -17,9 +17,10 @@ class FirebaseAuthFunction {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(color: Color(0xFFDC2626)),
-      ),
+      builder:
+          (context) => const Center(
+            child: CircularProgressIndicator(color: Color(0xFFDC2626)),
+          ),
     );
 
     try {
@@ -93,9 +94,10 @@ class FirebaseAuthFunction {
         password: password,
       );
       if (credential.user != null && credential.user!.emailVerified) {
-        Navigator.pushReplacement(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen()),
+          (route) => false,
         );
         showSnackBar(context, 'Login Success!');
       } else {
@@ -148,13 +150,24 @@ class FirebaseAuthFunction {
   static Future<UserCredential?> signInWithGoogle({
     required BuildContext context,
   }) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => const Center(
+            child: CircularProgressIndicator(color: Color(0xFFDC2626)),
+          ),
+    );
+
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
+
+      await googleSignIn.signOut();
 
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
       if (googleUser == null) {
-        showSnackBar(context, 'SignIn Canceled');
+        showSnackBar(context, 'Sign-in canceled');
         return null;
       }
 
@@ -168,6 +181,36 @@ class FirebaseAuthFunction {
 
       final UserCredential userCredential = await FirebaseAuth.instance
           .signInWithCredential(credential);
+
+      final user = userCredential.user;
+
+      if (user != null) {
+        final userDoc =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
+
+        if (!userDoc.exists) {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .set({
+                'uid': user.uid,
+                'email': user.email ?? '',
+                'fullName': user.displayName ?? '',
+                'photoUrl': user.photoURL ?? '',
+                'createdAt': FieldValue.serverTimestamp(),
+              });
+        }
+
+        showSnackBar(context, 'Sign-in successful');
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+          (route) => false,
+        );
+      }
 
       return userCredential;
     } catch (e) {

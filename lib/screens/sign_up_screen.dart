@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
 import 'package:mus3if/data/validation/form_validation.dart';
+import 'package:mus3if/screens/login_screen.dart';
 import 'package:mus3if/widgets/coustom_text_field_widget.dart';
 import 'package:mus3if/widgets/image_picker_widget.dart';
 
@@ -91,8 +92,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textController: confirmPasswordController,
                   text: 'Confirm Password',
                   icon: Icon(Icons.lock_outline, color: Colors.red),
-                  valuValidation: (value) =>
-                      FormValidation.confirmPasswordValidation(
+                  valuValidation:
+                      (value) => FormValidation.confirmPasswordValidation(
                         value,
                         passwordController.text,
                       ),
@@ -108,14 +109,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     filled: true,
                     fillColor: Color.fromARGB(255, 254, 237, 237),
                   ),
-                  items: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(
-                    (bloodType) {
-                      return DropdownMenuItem(
-                        value: bloodType,
-                        child: Text(bloodType),
-                      );
-                    },
-                  ).toList(),
+                  items:
+                      ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((
+                        bloodType,
+                      ) {
+                        return DropdownMenuItem(
+                          value: bloodType,
+                          child: Text(bloodType),
+                        );
+                      }).toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedBloodType = value;
@@ -207,7 +209,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
                       },
                       child: Text(
                         ' Log in',

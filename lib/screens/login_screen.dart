@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mus3if/data/firebaseFanction/firebase_auth_function.dart';
 import 'package:mus3if/data/validation/form_validation.dart';
 import 'package:mus3if/screens/forget_password_screen.dart';
+import 'package:mus3if/screens/home_screen.dart';
 import 'package:mus3if/screens/sign_up_screen.dart';
 import 'package:mus3if/widgets/coustom_text_field_widget.dart';
 
@@ -114,10 +115,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () async {
-                      await FirebaseAuthFunction.signInWithGoogle(
-                        context: context,
-                      );
+                      final userCredential =
+                          await FirebaseAuthFunction.signInWithGoogle(
+                            context: context,
+                          );
+
+                      if (userCredential != null) {
+                        
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      }
                     },
+
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffF20D0D),
                       shape: RoundedRectangleBorder(

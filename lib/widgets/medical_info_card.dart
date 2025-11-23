@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class MedicalInfoCard extends StatelessWidget {
   final String fullName;
   final String bloodType;
-  //final String Email;
+  final String email;
 
   const MedicalInfoCard({
     super.key,
-    //required this.Email,
+    required this.email,
     required this.bloodType,
     required this.fullName,
   });
@@ -35,8 +35,8 @@ class MedicalInfoCard extends StatelessWidget {
             SizedBox(height: 16),
             _buildInfoRow(Icons.person, "User Name", fullName),
             SizedBox(height: 12),
-            // _buildInfoRow(Icons.email, "Email", Email),
-            // SizedBox(height: 12),
+            _buildInfoRow(Icons.email, "Email", email),
+            SizedBox(height: 12),
             _buildInfoRow(Icons.bloodtype, "Blood Type", bloodType),
           ],
         ),

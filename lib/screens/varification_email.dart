@@ -39,7 +39,7 @@ class _VarificationState extends State<VarificationEmail> {
     });
     if (isEmailVarified) {
       time?.cancel();
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );

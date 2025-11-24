@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mus3if/tabs/home_tab.dart';
 import 'package:mus3if/tabs/guide_tab.dart';
+import 'package:mus3if/tabs/hospital_tab.dart';
 import 'package:mus3if/tabs/profile_tab.dart';
-import 'package:mus3if/screens/hospitals_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +14,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   int _currentNavIndex = 0;
-  final List<Widget> tabs = [HomeTab(), GuideTab(), ProfileTab()];
+
+  final List<Widget> tabs = [
+    HomeTab(),
+    GuideTab(),
+    HospitalsTab(),
+    ProfileTab(),
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -39,12 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentNavIndex = index;
           });
           if (index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HospitalsScreen()),
-            );
+            _onItemTapped(2); 
           } else if (index == 3) {
-            _onItemTapped(2);
+            _onItemTapped(3); 
           } else {
             _onItemTapped(index);
           }
@@ -60,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.location_on, 2),
-            label: "Locations",
+            label: "Hospitals",
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.person, 3),

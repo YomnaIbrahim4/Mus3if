@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.mus3if"
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = 34  // Keep this as 34 for now (targeting Android 14)
         versionCode = 1
         versionName = "1.0.0"

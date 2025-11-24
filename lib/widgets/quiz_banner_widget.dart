@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/main_quiz_screen.dart';
 
 class QuizBannerWidget extends StatelessWidget {
   const QuizBannerWidget({super.key});
@@ -48,7 +49,14 @@ class QuizBannerWidget extends StatelessWidget {
               ),
               elevation: 0,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+              MaterialPageRoute(
+                builder: (context) => MainQuizScreen(),
+              ),
+            );
+            },
             child: Row(
               children: [
                 Text(
